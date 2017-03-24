@@ -47,7 +47,7 @@ db.inventory.find( { status: "D" } )
 
 Mongo also supports a vast majority of popular langues out there...
 
-[MongoDBLanguages](https://en.wikipedia.org/wiki/MongoDB#/media/File:MongoDB-Logo.svg)
+[MongoDBLanguages](/assets/MongoLanguages.jpg)
 
 Some downsides to this language (which is entirely subjective): the lack of structure makes it difficult to standaradize for users. There also lacks a good security configuration which resulted in DB's being stolen and held for randsom.
 
