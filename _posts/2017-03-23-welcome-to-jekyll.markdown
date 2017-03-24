@@ -15,7 +15,7 @@ SQLite is a neat little [RDBMS](https://en.wikipedia.org/wiki/Relational_databas
 
 Because of how portabile this DBMS is it's ability to handle [multi-user](https://en.wikipedia.org/wiki/Multi-user) applications are limited. If you're looking for scalable DBMS's that can handle multiple users or high writing volume this one is likely not a good fit. 
 
-![MySQL](https://github.com/rweber87/log-a-blog/blob/gh-pages/_site/assets/MySQL.png)
+![MySQL](assets/MySQL.png)
  
 MySQL is ranked #2 in terms [popularity](http://db-engines.com/en/ranking_trend) just behind Oracle. As you might have assumed, MySQL is built to handle larger volumes of data and users.  It comes with many of the standard SQL features one would expect when using a [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system)  and also comes with a more advanced built-in security interface. 
 
@@ -25,7 +25,7 @@ The general consensus seems that MySQL's ease of use through open-sourced tools 
 
 A few companies currently utilizing MySQL include sites such as `Google, Facebook, Twitter, Flickr, and YouTube`.
 
-![MongoDB](https://github.com/rweber87/log-a-blog/blob/gh-pages/_site/assets/MongoDB.png)
+![MongoDB](/assets/MongoDB.png)
 
 The key difference that sets the other reviewed DBMS from Mongo is it is a *NoSQL document-oriented database program* (now that's a mouthful!). What does that mean exactly? Well let's break it down:
 
@@ -47,7 +47,7 @@ db.inventory.find( { status: "D" } )
 
 Mongo also supports a vast majority of popular langues out there...
 
-[MongoDBLanguages](/assets/MongoLanguages.jpg)
+![MongoDBLanguages](./assets/MongoLanguages.jpg)
 
 Some downsides to this language (which is entirely subjective): the lack of structure makes it difficult to standaradize for users. There also lacks a good security configuration which resulted in DB's being stolen and held for randsom.
 
@@ -55,7 +55,7 @@ All-in-all it's really up to you and the application you're trying to build. In 
 
 Here's a fun mapping of Facebook's class design. Enjoy!
 
-![FacebookSchema](https://github.com/rweber87/log-a-blog/blob/gh-pages/_site/assets/facebookschema.jpg)
+![FacebookSchema](../assets/facebookschema.jpg)
 
 [source](http://web.archive.org/web/20121031052327/http://blogs.x2line.com/al/archive/2007/06/02/3124.aspx)
 
