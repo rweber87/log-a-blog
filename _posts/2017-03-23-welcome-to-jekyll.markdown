@@ -31,7 +31,7 @@ The key difference that sets the other reviewed DBMS from Mongo is it is a *NoSQ
 
 * NoSQL - Does not imply what you might think. The "No" actually stands for Not Only. In other words SQL isn't the only language accepted to write queries. All that being said, Mongo does *not* support SQL when running queries. 
 
-* Document-oriented database implies that, unlike it's sibling relational databases (table based), all of our data can be stored in one single instance in the database. This allows the task of mapping to be quite flexible.
+* Document-oriented database implies that, unlike it's sibling relational databases (table based), all of our data can be stored in one single instance in the database. This allows the task of mapping to be quite flexible. [Here's a great article comparing document oriented databses vs. relational oriented databases.](http://docs.couchbase.com/developer/dev-guide-3.0/compare-docs-vs-relational.html)
 
 Additionally, the syntax of writing Mongo queries are quite different from SQL and seem very method like.
 
