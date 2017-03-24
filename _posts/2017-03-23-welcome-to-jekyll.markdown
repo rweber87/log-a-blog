@@ -9,13 +9,13 @@ DBMS stands for database management system (acronyms ftw!). Simply put it's a wa
 
 Three examples of commonly used DBMS' in today's development world are SQLite, MySQL, and MongoDB.
 
-![SQLite](https://github.com/rweber87/log-a-blog/blob/gh-pages/_site/assets/SQLite.png)
+![SQLite](/assets/SQLite.png)
 
 SQLite is a neat little [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system) released in 2000. A unique aspect of SQLite is it is embedded in the application running SQL as opposed to a client server database engine. This means it is tightly integrated in the application and makes calls to files that contain the data locally as opposed to a server. That alone makes SQLite very cimpact and portable for basic querying analysis, but at a cost.
 
 Because of how portabile this DBMS is it's ability to handle [multi-user](https://en.wikipedia.org/wiki/Multi-user) applications are limited. If you're looking for scalable DBMS's that can handle multiple users or high writing volume this one is likely not a good fit. 
 
-![MySQL](assets/MySQL.png)
+![MySQL](/assets/MySQL.png)
  
 MySQL is ranked #2 in terms [popularity](http://db-engines.com/en/ranking_trend) just behind Oracle. As you might have assumed, MySQL is built to handle larger volumes of data and users.  It comes with many of the standard SQL features one would expect when using a [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system)  and also comes with a more advanced built-in security interface. 
 
@@ -47,7 +47,7 @@ db.inventory.find( { status: "D" } )
 
 Mongo also supports a vast majority of popular langues out there...
 
-![MongoDBLanguages](./assets/MongoLanguages.jpg)
+![MongoDBLanguages](/assets/MongoLanguages.jpg)
 
 Some downsides to this language (which is entirely subjective): the lack of structure makes it difficult to standaradize for users. There also lacks a good security configuration which resulted in DB's being stolen and held for randsom.
 
@@ -55,7 +55,7 @@ All-in-all it's really up to you and the application you're trying to build. In 
 
 Here's a fun mapping of Facebook's class design. Enjoy!
 
-![FacebookSchema](../assets/facebookschema.jpg)
+![FacebookSchema](/assets/facebookschema.jpg)
 
 [source](http://web.archive.org/web/20121031052327/http://blogs.x2line.com/al/archive/2007/06/02/3124.aspx)
 
