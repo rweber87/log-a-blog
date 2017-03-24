@@ -11,7 +11,7 @@ Three examples of commonly used DBMS' in today's development world are SQLite, M
 
 ![SQLite](https://rweber87.github.io/log-a-blog/assets/SQLite.png)
 
-SQLite is a neat little [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system) released in 2000. A unique aspect of SQLite is it is embedded in the application running SQL as opposed to a client server database engine. This means it is tightly integrated in the application and makes calls to files that contain the data locally as opposed to a server. That alone makes SQLite very cimpact and portable for basic querying analysis, but at a cost.
+SQLite is a neat little [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system) released in 2000. A unique aspect of SQLite is it is embedded in the application running SQL as opposed to a client server database engine. This means it is tightly integrated in the application and makes calls to files that contain the data locally as opposed to a server. That alone makes SQLite very compact and portable for basic querying analysis, but at a cost.
 
 Because of how portabile this DBMS is it's ability to handle [multi-user](https://en.wikipedia.org/wiki/Multi-user) applications are limited. If you're looking for scalable DBMS's that can handle multiple users or high writing volume this one is likely not a good fit. 
 
