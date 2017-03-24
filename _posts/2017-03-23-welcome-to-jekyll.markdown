@@ -5,7 +5,7 @@ date:   2017-03-23 15:30:04 -0400
 categories: jekyll update
 ---
 
-DBMS stands for database management system (acronyms ftw!). Simply put it's a way for users to interact with data. A common misconception when learning about DBMS is referring to them as the database itself. It's actually an intermediary between the user, data, and other applications to capture and analyze data sets. During your journey as a developer you will likely reach a moment where you'll need to ask youself "self: which DBMS should I use?" My goal is to shine some light on the pro's and cons of some popular ones that are out there for you to better reach that conclusion on your own. 
+DBMS stands for database management system (acronyms ftw!). Simply put it's a way for users to interact with data. A common misconception when learning about DBMS is referring to them as the database itself. It's actually an intermediary between the user, data, and other applications to capture and analyze data sets. During your journey as a developer you will likely reach a moment where you'll need to ask yourself "self: which DBMS should I use?" My goal is to shine some light on the pro's and cons of some popular ones that are out there for you to better reach that conclusion on your own. 
 
 Three examples of commonly used DBMS' in today's development world are SQLite, MySQL, and MongoDB.
 
@@ -13,7 +13,7 @@ Three examples of commonly used DBMS' in today's development world are SQLite, M
 
 SQLite is a neat little [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system) released in 2000. A unique aspect of SQLite is it is embedded in the application running SQL as opposed to a client server database engine. This means it is tightly integrated in the application and makes calls to files that contain the data locally as opposed to a server. That alone makes SQLite very compact and portable for basic querying analysis, but at a cost.
 
-Because of how portabile this DBMS is it's ability to handle [multi-user](https://en.wikipedia.org/wiki/Multi-user) applications are limited. If you're looking for scalable DBMS's that can handle multiple users or high writing volume this one is likely not a good fit. 
+Because of how portable this DBMS is it's ability to handle [multi-user](https://en.wikipedia.org/wiki/Multi-user) applications are limited. If you're looking for scalable DBMS's that can handle multiple users or high writing volume this one is likely not a good fit. 
 
 ![MySQL](https://rweber87.github.io/log-a-blog/assets/MySQL.png)
  
@@ -49,9 +49,9 @@ Mongo also supports a vast majority of popular langues out there...
 
 ![MongoDBLanguages](https://rweber87.github.io/log-a-blog/assets/MongoLanguages.jpg)
 
-Some downsides to this language (which is entirely subjective): the lack of structure makes it difficult to standaradize for users. There also lacks a good security configuration which resulted in DB's being stolen and held for randsom.
+Some downsides to this language (which is entirely subjective): the lack of structure makes it difficult to standardize for users. There also lacks a good security configuration which resulted in DB's being stolen and held for ransom.
 
-All-in-all it's really up to you and the application you're trying to build. In my opnion it seems best to start small and work your way up as needed, but don't wait too long to upgrade or integrating a new system to fit your needs could prove to be quite difficult.
+All-in-all it's really up to you and the application you're trying to build. In my opinion it seems best to start small and work your way up as needed, but don't wait too long to upgrade or integrating a new system to fit your needs could prove to be quite difficult.
 
 Here's a fun mapping of Facebook's class design. Enjoy!
 
