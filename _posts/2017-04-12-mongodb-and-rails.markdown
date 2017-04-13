@@ -33,7 +33,7 @@ One of the added benefits to using MongoDB for your DBMS is the flexibility to e
 
 ![Review](https://rweber87.github.io/log-a-blog/assets/post2/reviews.png)
 
-Other great features offered by Mongo are it's simple and easy way to query data. In the example below we're running a query on our products to return everything that has a price less than or equal to 40 (Mongo syntax => lte) `Product.where(:price.lte => 40)`. Another way to write that is to run the query on the class directly `Product.lte(price: 40).first`. The abbreviated syntax again offers the user to focus on Mongo syntax as opposed to remembering the Active Record methods that come out of the box, and IMO reads slightly better. 
+Other great features offered by Mongo are it's simple and easy way to query data. In the example below we're running a query on our products to return everything that has a price less than or equal to 40 (Mongo syntax => lte) `Product.where(:price.lte => 40)`. Another way to write that is to run the query on the class directly `Product.lte(price: 40).first`. The abbreviated syntax again offers the user to focus on Mongo syntax as opposed to remembering the Active Record methods that come out of the box, and IMO reads slightly better. Refer to this link for more ways to query using [MongoDB](https://docs.mongodb.com/ruby-driver/master/tutorials/6.1.0/mongoid-queries/)
 
 ![Query](https://rweber87.github.io/log-a-blog/assets/post2/querying.png)
 
