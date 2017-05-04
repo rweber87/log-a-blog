@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://localhost:3000/users/4/edit -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Amusement Park</title>
+    <link rel="stylesheet" media="all" href="./Amusement Park_files/application.css">
+    <script src="./Amusement Park_files/jquery.js"></script>
+<script src="./Amusement Park_files/jquery_ujs.js"></script>
+<script src="./Amusement Park_files/affix.js"></script>
+<script src="./Amusement Park_files/alert.js"></script>
+<script src="./Amusement Park_files/button.js"></script>
+<script src="./Amusement Park_files/carousel.js"></script>
+<script src="./Amusement Park_files/collapse.js"></script>
+<script src="./Amusement Park_files/dropdown.js"></script>
+<script src="./Amusement Park_files/tab.js"></script>
+<script src="./Amusement Park_files/transition.js"></script>
+<script src="./Amusement Park_files/scrollspy.js"></script>
+<script src="./Amusement Park_files/modal.js"></script>
+<script src="./Amusement Park_files/tooltip.js"></script>
+<script src="./Amusement Park_files/popover.js"></script>
+<script src="./Amusement Park_files/bootstrap.js"></script>
+<script src="./Amusement Park_files/application.js"></script>
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="zpeDvBAw13CFWZa5lWkAmQmGCg8YRvRzW5EnB9kiIhO1Hf1hlaiUOQEnRVNRilCKlEVzc1/b8rp5wkne6aCbNQ==">
+    
+    <link href="./Amusement Park_files/font-awesome.css" rel="stylesheet">
+  </head>
+  <body>
+    <!--  navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="http://localhost:3000/">Home</a>
+        
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+           <!--  nav here -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="container" role="main">
+      <h1>Edit User</h1>
+
+<form class="edit_user" id="edit_user_4" action="http://localhost:3000/users/4" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="zpeDvBAw13CFWZa5lWkAmQmGCg8YRvRzW5EnB9kiIhO1Hf1hlaiUOQEnRVNRilCKlEVzc1/b8rp5wkne6aCbNQ==">
+		<label for="user_name">Name</label><br>
+		<input type="text" value="Danny" name="user[name]" id="user_name"><br>
+		<label for="user_How happy are you? (1-5 scale, 5 being happiest)">How happy are you? (1-5 scale, 5 being happiest)</label><br>
+		<input type="text" value="1" name="user[happiness]" id="user_happiness"><br>
+		<label for="user_Height (in inches)">Height (in inches)</label><br>
+		<input type="text" value="50" name="user[height]" id="user_height"><br>
+		<label for="user_How nauseous are you? (1-5 scale, 5 being super nauseous)">How nauseous are you? (1-5 scale, 5 being super nauseous)</label><br>
+		<input type="text" value="5" name="user[nausea]" id="user_nausea"><br>
+		<label for="user_How many tickets do you have">How many tickets do you have?</label><br>
+		<input type="text" value="0" name="user[tickets]" id="user_tickets"><br>
+		<label for="user_Check here if you are an admin">Check here if you are an admin</label>
+		<input name="user[admin]" type="hidden" value="0"><input type="checkbox" value="1" name="user[admin]" id="user_admin"><br>
+		<input type="submit" name="commit" value="Update User">
+</form>
+    </div>
+
+  
+</body></html>
