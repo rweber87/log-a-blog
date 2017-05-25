@@ -143,7 +143,7 @@ ReactDOM.render(
 ```
 You should now be able to view in the browser a board that looks something like this.
 
-![tictactoeFirst](https://rweber87.github.io/log-a-blog/assets/post3/tictactoeFirst.png)
+![tictactoeFirst](https://rweber87.github.io/log-a-blog/assets/post4/tictactoeFirst.png)
 
 It's a bit plain and there's not much to interact with. Let's change that up and bring some of our components to life. Each of our components can take in props or 'properties' as a way to pass data from one part of our application to the next. We'll start by passing some informatin from our Board class down to our Square component. 
 
@@ -170,7 +170,7 @@ Square Render method
 
 Our board should now look something like this:
 
-![tictactoeSecond](https://rweber87.github.io/log-a-blog/assets/post3/tictactoeSecond.png)
+![tictactoeSecond](https://rweber87.github.io/log-a-blog/assets/post4/tictactoeSecond.png)
 
 The reason why each Square is numbered is because of our render method inside of our Board class. Here we created three nested `<div>`s inside of one larger `<div>` with three squares per `<div>`. Each square is numbered via the `renderSquare` method defined in our Board class that creates a new Square component with a new property of a number passed in by the board.
 
@@ -279,7 +279,7 @@ Now let's go ahead and define that handleClick method in our Board class that ch
 
 Now we're getting somewhere! You're grid should now be able to alternate between 'X' and 'O' with ease! 
 
-![tictactoeThird](https://rweber87.github.io/log-a-blog/assets/post3/tictactoeThird.png)
+![tictactoeThird](https://rweber87.github.io/log-a-blog/assets/post4/tictactoeThird.png)
 
 Let's tell the user who's turn it is by rendering out that detail in the `render()` function of our Board class.
 
@@ -336,11 +336,11 @@ if (calculateWinner(squares) || squares[i]) {
 
 Voila! A working tic tac toe game using React!
 
-![tictactoeFourth](https://rweber87.github.io/log-a-blog/assets/post3/tictactoeFourth.png)
+![tictactoeFourth](https://rweber87.github.io/log-a-blog/assets/post4/tictactoeFourth.png)
 
 Finished code with some additional functionality can be found on my github account here [React Tic Tac Toe](https://github.com/rweber87/reactTicTacToe)
 
-All credit given to the React team for creating such easy to follow instructions for this tutorial.
+All credit to the React team for creating such an easy to follow instructional for this tutorial.
 
 [React](https://facebook.github.io/react/tutorial/tutorial.html)
 
