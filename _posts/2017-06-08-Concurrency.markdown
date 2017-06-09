@@ -48,13 +48,13 @@ Let's re-write that same function using our generator notation.
         yield index++;
   }
 
-  var inc = incrementor();
+  var inc = incrementer();
 ```
 
 Above we've delcared the same function with a few new notational differences, and saved it as a variable called `inc`. We've added a star after declaring the function and inserted the term `yield` before incrementing our index. This yield is where the magic happens. The expression is run as normal until the `yield` has been hit in the sequence. To envoke this function we'll need another new syntactical concept called `next()`. 
 
 ```javascript
-console.log(gen.next().value)
+console.log(inc.next().value)
 ```
 
 Per normal synchronous javascript behavior we would expect this to again print out all the numbers before stopping. We've now wired the function up to stop once the `yield` has been hit allowing us to hook into this method. Everytime this function is envoked it will execute once giving us the capacity to perform other tasks before completing the while condition.
