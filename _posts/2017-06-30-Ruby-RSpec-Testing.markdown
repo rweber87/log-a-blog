@@ -13,7 +13,7 @@ I've created a directory called `zoo_project` and ran the command `gem install r
 
 ![makingdirectory](https://rweber87.github.io/log-a-blog/assets/post5/makingdirectory.png)
 
-Next we'll need a `spec` directory to hold all the testing files we'll be writing. We will also need the actual class file to creat instances of that particular class for testing purposes. In case you haven't guessed it yet, we'll be creating classes of animals to add to our 'zoo' project.
+Next we'll need a `spec` directory to hold all the testing files we'll be writing. We will also need the actual class file to creat instances of that particular class for testing purposes. 
 
 ![helperfiles](https://rweber87.github.io/log-a-blog/assets/post5/helperfiles.png)
 
@@ -60,6 +60,50 @@ describe Animal do
 end
 ```
 
+The `describe '#new' do ` block is very readable, very Ruby, and does exactly as it sounds. We're writing tests within this block of code to ensure the new method returns an `Animal` object and throws an error if an incorrect number of parameters are passed on the initialize method. Before we can test our tests, we'll need to define our `Animal` class and write the intialize method. In our `animal.rb` file add this line of code.
+
+```ruby
+class Animal
+
+  def initialize(type, age, category)
+    @type = type
+    @age = age
+    @category = category
+  end
+
+end
+```
+Now we can see if our two tests we've written actually work. Run this line of code in the home directory `rspec spec --format doc`.
+
+![firsttest](https://rweber87.github.io/log-a-blog/assets/post5/firstest.png)
+
+Awesome! Green is always a good sign when testing. For our last bit in this tutorial let's go ahead and write tests for the actual attributes we want an `Animal` to possess. 
+
+Add these tests just below the `#new` block of tests so we can ensure the attributes of an `Animal` align with `before :each` `Animal` instance.
+
+```ruby
+  describe "@type" do
+    it "returns the correct Type" do
+      expect(@animal.type).to eq "type"
+    end
+  end
+
+  describe "@age" do
+    it "returns the correct Age" do
+      expect(@animal.age).to eq "age"
+    end
+  end
+
+  describe "@category" do
+    it "returns the correct Type" do
+      expect(@animal.category).to eq "category"
+    end
+  end
+```
+
+Here we're describing what the return value should be when we've set up our `Animal` initialize method correctly. Each attribute should return their respective value as defined in our `before :each` block of code. The last thing we need to do is define those methods on our `Animal` class. The easy way to do so is through our `attr_accessor` methods. Add this line of code above the initialize method to our `animal.rb` file `attr_accessor :type, :age, :category`. Let's run our test one final time and ensure all is right with our mini project.
+
+![lasttest](https://rweber87.github.io/log-a-blog/assets/post5/lasttest.png)
 
 
 [Github](https://github.com/rweber87)
