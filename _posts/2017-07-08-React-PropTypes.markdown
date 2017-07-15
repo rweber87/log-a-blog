@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "React PropTypes"
-date:   2017-06-30 15:30:04 -0400
+date:   2017-07-08 15:30:04 -0400
 categories: React PropTypes Libraries
 ---
 

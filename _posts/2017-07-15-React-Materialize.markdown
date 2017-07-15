@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Materialize Modals in React"
-date:   2017-06-30 15:30:04 -0400
+date:   2017-07-15 15:30:04 -0400
 categories: Materialize Modals in React
 ---
 
