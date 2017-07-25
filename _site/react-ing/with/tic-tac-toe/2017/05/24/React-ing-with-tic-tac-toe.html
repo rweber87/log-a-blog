@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>React-ing with tic-tac-toe</title>
+  <meta name="description" content="The game tic-tac-toe can be traced back to ancient egyptian civilizations. It’s only fitting that we take such an ancient tradition and rebuild it utilizing ...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/react-ing/with/tic-tac-toe/2017/05/24/React-ing-with-tic-tac-toe.html">
+  <link rel="alternate" type="application/rss+xml" title="Log-A-Blog" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Log-A-Blog</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/rweber87.github.io/log-a-blog/about/">About Me</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">React-ing with tic-tac-toe</h1>
+    <p class="post-meta"><time datetime="2017-05-24T15:30:04-04:00" itemprop="datePublished">May 24, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>The game tic-tac-toe can be traced back to ancient egyptian civilizations. It’s only fitting that we take such an ancient tradition and rebuild it utilizing some of the most modern front end web frameworks known to developers, or React. Let’s start off by creating our own directory and building a fresh new application.</p>
+
+<p>Build a fresh new application by running these commands:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
+<span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span> <span class="nx">my</span><span class="o">-</span><span class="nx">app</span>
+
+<span class="nx">cd</span> <span class="nx">my</span><span class="o">-</span><span class="nx">app</span>
+<span class="nx">npm</span> <span class="nx">start</span>
+</code></pre>
+</div>
+
+<p>I was having difficulty running the intial <code class="highlighter-rouge">npm install...</code> because it was requiring an admin to do so. The work around is to run it as <code class="highlighter-rouge">sudo npm install -g create-react-app</code>. At this point you should be able to use your shortcut to open up the directory in your preferred text editor. I’ll be using sublime 3 but any should suffice. Now run <code class="highlighter-rouge">npm start</code> to start your server and open your browser to the URL <code class="highlighter-rouge">http://localhost:3000</code>.</p>
+
+<p>Next, replace all of the existing code in your already populated index.css file with the code below.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">body</span> <span class="p">{</span>
+  <span class="nl">font</span><span class="p">:</span> <span class="mi">14</span><span class="nx">px</span> <span class="s2">"Century Gothic"</span><span class="p">,</span> <span class="nx">Futura</span><span class="p">,</span> <span class="nx">sans</span><span class="o">-</span><span class="nx">serif</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="mi">20</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">ol</span><span class="p">,</span> <span class="nx">ul</span> <span class="p">{</span>
+  <span class="nx">padding</span><span class="o">-</span><span class="nx">left</span><span class="err">:</span> <span class="mi">30</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nx">board</span><span class="o">-</span><span class="nx">row</span><span class="err">:</span><span class="nx">after</span> <span class="p">{</span>
+  <span class="nl">clear</span><span class="p">:</span> <span class="nx">both</span><span class="p">;</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s2">""</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nx">table</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nx">status</span> <span class="p">{</span>
+  <span class="nx">margin</span><span class="o">-</span><span class="nx">bottom</span><span class="err">:</span> <span class="mi">10</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nx">square</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="err">#</span><span class="nx">fff</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="mi">1</span><span class="nx">px</span> <span class="nx">solid</span> <span class="err">#</span><span class="mi">999</span><span class="p">;</span>
+  <span class="nl">float</span><span class="p">:</span> <span class="nx">left</span><span class="p">;</span>
+  <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="err">:</span> <span class="mi">24</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="err">:</span> <span class="nx">bold</span><span class="p">;</span>
+  <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="err">:</span> <span class="mi">34</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="mi">34</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nx">margin</span><span class="o">-</span><span class="nx">right</span><span class="err">:</span> <span class="o">-</span><span class="mi">1</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nx">margin</span><span class="o">-</span><span class="nx">top</span><span class="err">:</span> <span class="o">-</span><span class="mi">1</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="err">:</span> <span class="nx">center</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="mi">34</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nx">square</span><span class="err">:</span><span class="nx">focus</span> <span class="p">{</span>
+  <span class="nl">outline</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nx">kbd</span><span class="o">-</span><span class="nx">navigation</span> <span class="p">.</span><span class="nx">square</span><span class="err">:</span><span class="nx">focus</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="err">#</span><span class="nx">ddd</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nx">game</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nx">flex</span><span class="p">;</span>
+  <span class="nx">flex</span><span class="o">-</span><span class="nx">direction</span><span class="err">:</span> <span class="nx">row</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nx">game</span><span class="o">-</span><span class="nx">info</span> <span class="p">{</span>
+  <span class="nx">margin</span><span class="o">-</span><span class="nx">left</span><span class="err">:</span> <span class="mi">20</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Replace all of the code in your index.js file with the code below with the exception of the the first 5 lines you’re importing from other directories/libraries.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Square</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"square"</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="cm">/* TODO */</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Board</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">renderSquare</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="o">/&gt;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="s1">'Next player: X'</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"status"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">status</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"board-row"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">0</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">1</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">2</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"board-row"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">3</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">4</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"board-row"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">6</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">7</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">8</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Game</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"game"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"game-board"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Board</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"game-info"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="cm">/* status */</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">ol</span><span class="o">&gt;</span><span class="p">{</span><span class="cm">/* TODO */</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/ol</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ========================================</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Game</span> <span class="o">/&gt;</span><span class="p">,</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre>
+</div>
+<p>You should now be able to view in the browser a board that looks something like this.</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post4/tictactoeFirst.png" alt="tictactoeFirst" /></p>
+
+<p>It’s a bit plain and there’s not much to interact with. Let’s change that up and bring some of our components to life. Each of our components can take in props or ‘properties’ as a way to pass data from one part of our application to the next. We’ll start by passing some informatin from our Board class down to our Square component.</p>
+
+<p>Change the Board render method by passing along a <code class="highlighter-rouge">value</code> prop to the Square component. After that we’re going to chang our Square’s render method to reflect the new property it’s receiving. Each method should look as such</p>
+
+<p>Board</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Board</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">renderSquare</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>  <span class="p">}</span> <span class="p">...</span>
+</code></pre>
+</div>
+
+<p>Square Render method</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>	<span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+	    <span class="k">return</span> <span class="p">(</span>
+	      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"square"</span><span class="o">&gt;</span>
+	        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
+	      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>	    <span class="p">);</span>
+	  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Our board should now look something like this:</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post4/tictactoeSecond.png" alt="tictactoeSecond" /></p>
+
+<p>The reason why each Square is numbered is because of our render method inside of our Board class. Here we created three nested <code class="highlighter-rouge">&lt;div&gt;</code>s inside of one larger <code class="highlighter-rouge">&lt;div&gt;</code> with three squares per <code class="highlighter-rouge">&lt;div&gt;</code>. Each square is numbered via the <code class="highlighter-rouge">renderSquare</code> method defined in our Board class that creates a new Square component with a new property of a number passed in by the board.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="s1">'Next player: X'</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"status"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">status</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"board-row"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">0</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">1</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">2</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"board-row"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">3</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">4</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"board-row"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">6</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">7</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">8</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>Again, there’s nothing too exciting about our application just yet so let’s add more to spice things up! We’ll add some functionality now and change the square to render an ‘X’ once it’s been selected by the user. Update our Square component to maintain it’s own state via the constructor method return a <code class="highlighter-rouge">&lt;button&gt;</code> that has a property onClick that’s set to a function. This function will be what changes the state of an individual square to be ‘X’ when it’s been clicked.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Square</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">value</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"square"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">value</span><span class="p">:</span> <span class="s1">'X'</span><span class="p">})}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>The limitations we face by having a square control it’s own state is the inability to alternate between players and determining who wins the game. Let’s refactor this a bit to have the Board class handle this functionality now. Add a constructor method that controls the state of the Board by setting an array of length 9 to an array of null values.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">squares</span><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">9</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Modify a the <code class="highlighter-rouge">renderSquare</code> method so a square receives a prop value and an <code class="highlighter-rouge">onClick</code> method that we’ll define in just a second.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">renderSquare</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">(</span><span class="nx">i</span><span class="p">)}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>With our board handling the state and passing some logic down to a square we can modify our square code to look something like this.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Square</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"square"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onClick</span><span class="p">()}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Our square is accepting properties being pass from our Board. Because these are properties passed from a parent class via the props we can call <code class="highlighter-rouge">this.props</code> then whatever we’re gaining access to i.e. the value from the renderSquare method on the board or the onClick method from the prop onClick in the render square method (see code above for a point of reference).</p>
+
+<p>Now let’s go ahead and define that handleClick method in our Board class that changes the square based on who’s turn it is as well as maintaining that person’s turn in the state of our Board.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">squares</span><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">9</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+      <span class="na">xIsNext</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleClick</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">squares</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">.</span><span class="nx">slice</span><span class="p">();</span>
+    <span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span> <span class="p">?</span> <span class="s1">'X'</span> <span class="p">:</span> <span class="s1">'O'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="na">squares</span><span class="p">:</span> <span class="nx">squares</span><span class="p">,</span>
+      <span class="na">xIsNext</span><span class="p">:</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Now we’re getting somewhere! You’re grid should now be able to alternate between ‘X’ and ‘O’ with ease!</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post4/tictactoeThird.png" alt="tictactoeThird" /></p>
+
+<p>Let’s tell the user who’s turn it is by rendering out that detail in the <code class="highlighter-rouge">render()</code> function of our Board class.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="s1">'Next player: '</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span> <span class="p">?</span> <span class="s1">'X'</span> <span class="p">:</span> <span class="s1">'O'</span><span class="p">);</span>
+    <span class="p">...</span>
+</code></pre>
+</div>
+
+<p>The last thing we’ll do is determine who the winner is. Here let’s build a function that gets called whenever the board is rendered.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">calculateWinner</span><span class="p">(</span><span class="nx">squares</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">lines</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+  <span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">===</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">b</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">===</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">c</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Here we have an array of all combinations possible to obtain a win. Because our <code class="highlighter-rouge">handleClick()</code> method updates the state of the Board by changing the Square that’s been selected with who’s turn it was (i.e. ‘X’ or ‘O’) we’re able to iterate over that each time to see if three spaces equal each other. All that’s left is to check if someone has won when the Board is rendered. Replace the status in the Board’s render method with the below conditional.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">winner</span> <span class="o">=</span> <span class="nx">calculateWinner</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">status</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">winner</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">status</span> <span class="o">=</span> <span class="s1">'Winner: '</span> <span class="o">+</span> <span class="nx">winner</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">status</span> <span class="o">=</span> <span class="s1">'Next player: '</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span> <span class="p">?</span> <span class="s1">'X'</span> <span class="p">:</span> <span class="s1">'O'</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Let’s also prevent the user from clicking if a winner has been determined. Add this code to our <code class="highlighter-rouge">handClick()</code> function as a conditional to stop the game.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">calculateWinner</span><span class="p">(</span><span class="nx">squares</span><span class="p">)</span> <span class="o">||</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Voila! A working tic tac toe game using React!</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post4/tictactoeFourth.png" alt="tictactoeFourth" /></p>
+
+<p>Finished code with some additional functionality can be found on my github account here <a href="https://github.com/rweber87/reactTicTacToe">React Tic Tac Toe</a></p>
+
+<p>All credit to the React team for creating such an easy to follow instructional for this tutorial.</p>
+
+<p><a href="https://facebook.github.io/react/tutorial/tutorial.html">React</a></p>
+
+<p><a href="https://github.com/rweber87">Github</a>
+<a href="rob.weber87@gmail.com">Email</a></p>
+
+<!-- Mapping for links :D [jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+ -->
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Log-A-Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Log-A-Blog
+            
+            </li>
+            
+            <li><a href="mailto:rob.weber87@gmail.com">rob.weber87@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/rweber87"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">rweber87</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/rweber87"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">rweber87</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Writing about code stuff and how it works
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

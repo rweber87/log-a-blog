@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Operation: Ghost Town</title>
+  <meta name="description" content="May the fourth be with you!">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/turning/nothing/into/something/2017/05/03/operation-ghost-town.html">
+  <link rel="alternate" type="application/rss+xml" title="Log-A-Blog" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Log-A-Blog</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/rweber87.github.io/log-a-blog/about/">About Me</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Operation: Ghost Town</h1>
+    <p class="post-meta"><time datetime="2017-05-03T15:30:04-04:00" itemprop="datePublished">May 3, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>May the fourth be with you!</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post3/vaderMeme.png" alt="current_users" /></p>
+
+<p>My friend <a href="https://github.com/drumnation">Dave</a> and I used our newly aqcuired coding jedi skills and worked on an application together replicating a reddit like website with one big exception. It was full of fake news! You’re probably saying to yourself, “Why does the world need another fake news website?!” We wanted to bring about fake news in a clearly obvious way by illustrating how unbelievable these articles actually were. It also highlights how easily we can abuse our jedi powers for evil by propensiating bad or fake content.</p>
+
+<p>In the process of creating our app we had one issue that was important to make our site more believable. We needed users so our website had a little more street credibility. But how were we going to generate users out of thin air? Thanks for our wonderful gem library we were able to do just that! The three gems that made this possible were <a href="https://rubygems.org/gems/factory-helper/versions/1.7.4">factory-helper</a>, <a href="https://rubygems.org/gems/faker">faker</a> and <a href="https://rubygems.org/gems/ui_faces">ui_faces</a>! They’re really easy to install as most gems are, except these don’t work very well together. To utilize and seed your database you’ll have to use them separately or you’ll run into kinks like <a href="https://github.com/drumnation">Dave</a> and I.</p>
+
+<p>First, you’ll want to include each gem in the gem file of your application and run <code class="highlighter-rouge">bundle install</code>. Once that’s done you’ll need to create the seed file with the relevant information for each of your users. We had some fun and gave our users Chuck Norris quotes when they loaded, beer names, a “Harry Potter” location, and a few other random facts about them that aren’t relevant at all (see how ridiculously fun this is becoming?!)</p>
+
+<p>The app as it stands currently has one user, myself.</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post3/current_users.png" alt="current_users" /></p>
+
+<p>To begin generating our users we’ll want to create a seeds file to actually persist the users into our database that will later be rendered when visited.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'ui_faces'</span>
+<span class="nb">require</span> <span class="s1">'factory-helper'</span>
+
+<span class="mi">100</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+  <span class="k">def</span> <span class="nf">generate_gender</span>
+    <span class="n">random_gender</span> <span class="o">=</span> <span class="no">Random</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="mi">1</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">male_or_female</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+    <span class="n">binary</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">?</span> <span class="s2">"male"</span> <span class="p">:</span> <span class="s1">'female'</span>
+  <span class="k">end</span>
+
+  <span class="vi">@gender</span> <span class="o">=</span> <span class="n">male_or_female</span><span class="p">(</span><span class="n">generate_gender</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">male_name_or_female_name</span>
+    <span class="k">if</span> <span class="vi">@gender</span> <span class="o">==</span> <span class="s2">"male"</span>
+      <span class="no">FactoryHelper</span><span class="o">::</span><span class="no">Name</span><span class="p">.</span><span class="nf">male_first_name</span>
+    <span class="k">elsif</span> <span class="vi">@gender</span> <span class="o">==</span> <span class="s2">"female"</span>
+      <span class="no">FactoryHelper</span><span class="o">::</span><span class="no">Name</span><span class="p">.</span><span class="nf">female_first_name</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+	<span class="no">User</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+		<span class="ss">name: </span><span class="n">male_name_or_female_name</span><span class="p">,</span>
+		<span class="ss">username: </span><span class="no">FactoryHelper</span><span class="o">::</span><span class="no">Internet</span><span class="p">.</span><span class="nf">user_name</span><span class="p">(</span><span class="n">male_name_or_female_name</span><span class="p">),</span>
+		<span class="ss">email: </span><span class="no">FactoryHelper</span><span class="o">::</span><span class="no">Internet</span><span class="p">.</span><span class="nf">email</span><span class="p">(</span><span class="n">male_name_or_female_name</span><span class="p">),</span>
+		<span class="ss">password: </span><span class="no">FactoryHelper</span><span class="o">::</span><span class="no">Internet</span><span class="p">.</span><span class="nf">password</span><span class="p">,</span>
+		<span class="ss">gender: </span><span class="vi">@gender</span><span class="p">,</span>
+		<span class="ss">image: </span><span class="no">UiFaces</span><span class="p">.</span><span class="nf">sex</span><span class="p">(</span><span class="vi">@gender</span><span class="p">),</span>
+		<span class="ss">city: </span><span class="no">FactoryHelper</span><span class="o">::</span><span class="no">Address</span><span class="p">.</span><span class="nf">city</span><span class="p">,</span>
+		<span class="ss">zip: </span><span class="no">FactoryHelper</span><span class="o">::</span><span class="no">Address</span><span class="p">.</span><span class="nf">zip</span>
+	<span class="p">)</span>
+<span class="k">end</span>
+
+</code></pre>
+</div>
+
+<p>At the top of our seeds file we’re including two gems <a href="https://rubygems.org/gems/ui_faces">ui_faces</a> and <a href="https://rubygems.org/gems/factory-helper/versions/1.7.4">factory-helper</a>. The <a href="https://rubygems.org/gems/ui_faces">ui_faces</a> gem persists random images of users. We wanted an assortment of male and female users so we added a helper method that signaled to our <code class="highlighter-rouge">User create</code> method which type of name to generate. This allowed us to specify the image and email to be gender specific as well. As you can see we’re calling this generate method 100 times to seed 100 new users into our database. The fun part is watching all of these user persist and knowing our town is slowly coming to life.</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post3/generateUserGif.gif" alt="generateUserGif" /></p>
+
+<p>The next step (and this was just for giggles) was using the <a href="https://rubygems.org/gems/faker">faker</a> gem to give each user some unique facts that make absolutely no sense. That seed file looked something like this…</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'faker'</span>
+
+<span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span>
+  	<span class="ss">book_genre: </span><span class="no">Faker</span><span class="o">::</span><span class="no">Book</span><span class="p">.</span><span class="nf">genre</span><span class="p">,</span>
+		<span class="ss">chuck_norris_fact: </span><span class="no">Faker</span><span class="o">::</span><span class="no">ChuckNorris</span><span class="p">.</span><span class="nf">fact</span><span class="p">,</span>
+		<span class="ss">beer_name: </span><span class="no">Faker</span><span class="o">::</span><span class="no">Beer</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span>
+		<span class="ss">food_ingredient: </span><span class="no">Faker</span><span class="o">::</span><span class="no">Food</span><span class="p">.</span><span class="nf">ingredient</span><span class="p">,</span>
+		<span class="ss">gameofthrones_house: </span><span class="no">Faker</span><span class="o">::</span><span class="no">GameOfThrones</span><span class="p">.</span><span class="nf">house</span><span class="p">,</span>
+		<span class="ss">harry_potter_location: </span><span class="no">Faker</span><span class="o">::</span><span class="no">HarryPotter</span><span class="p">.</span><span class="nf">location</span><span class="p">,</span>
+		<span class="ss">job_key_skill: </span><span class="no">Faker</span><span class="o">::</span><span class="no">Job</span><span class="p">.</span><span class="nf">key_skill</span><span class="p">,</span>
+		<span class="ss">space_planet: </span><span class="no">Faker</span><span class="o">::</span><span class="no">Space</span><span class="p">.</span><span class="nf">planet</span>
+  <span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Each user will now have random information in their “About Me” section of our app stating what type of novel they’d be, the type of beer they prefer, a wise fact from Chuck Norris etc. This only further illustrates the ridiculous nature of our application.</p>
+
+<p>Let’s watch this bit persist to each user that exists!</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post3/extraUserData.gif" alt="extraUserData" /></p>
+
+<p>The moral of our jedi story is to not take for granted the power of the internet at our fingertips. It’s easy to turn our ways towards the dark side and convince people that nothing is something for recognition’s sake.</p>
+
+<p><img src="https://rweber87.github.io/log-a-blog/assets/post3/happyVaderMeme.png" alt="happyVaderMeme" /></p>
+
+<p><a href="https://github.com/rweber87">Github</a>
+<a href="rob.weber87@gmail.com">Email</a></p>
+
+<!-- Mapping for links :D [jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+ -->
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Log-A-Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Log-A-Blog
+            
+            </li>
+            
+            <li><a href="mailto:rob.weber87@gmail.com">rob.weber87@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/rweber87"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">rweber87</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/rweber87"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">rweber87</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Writing about code stuff and how it works
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
