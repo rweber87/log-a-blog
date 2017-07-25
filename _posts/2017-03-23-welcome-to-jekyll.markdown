@@ -7,7 +7,7 @@ categories: jekyll update
 
 DBMS stands for database management system (abbr ftw!). Simply put it's a way for users to interact with data. A common misconception when learning about DBMS is referring to them as the database itself. It's actually an intermediary between the user, data, and other applications to capture and analyze data sets. During your journey as a developer you will likely reach a moment where you'll need to ask yourself "self: which DBMS should I use?" My goal is to shine some light on the pro's and cons of some popular ones that are out there for you to better reach that conclusion on your own. 
 
-Three examples of commonly used DBMS' in today's development world are SQLite, MySQL, and MongoDB.
+Three examples of commonly used `DBMS` in today's development world are SQLite, MySQL, and MongoDB.
 
 ![SQLite](https://rweber87.github.io/log-a-blog/assets/SQLite.png)
 
