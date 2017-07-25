@@ -11,11 +11,11 @@ Learning this while nearing the launch of the product I needed an quick and easy
 
 [MaterializeCSS](http://materializecss.com/) has built in `class` names that implement certain features for based on the size of the screen. As an example, I needed to adjust the navbar for my application given this was the result without taking into consideration mobile usage: 
 
-![mobile-navbar](https://rweber87.github.io/log-a-blog/assets/post7/mobile-navbar.png)
+![mobile-navbar](https://rweber87.github.io/log-a-blog/assets/post8/mobile-navbar.png)
 
 Here I'm using the Chrome developer tool to view it from a mobile perspective. The image below shows what the navbar looks like from a regular desktop:
 
-![desktop-navbar](https://rweber87.github.io/log-a-blog/assets/post7/desktop-navbar.png)
+![desktop-navbar](https://rweber87.github.io/log-a-blog/assets/post8/desktop-navbar.png)
 
 Because the screen size is significantly smaller the menu items on the right are overlapping with the logo. Obviously this is not what we want as developers. 
 
@@ -72,7 +72,7 @@ Additionally, we've gone ahead and added a side navbar to render only if the app
 
 These are the items in the side navbar that appear once the user selects the logo or collapsible menu icon.
 
-![desktop-navbar](https://rweber87.github.io/log-a-blog/assets/post7/side-navbar.gif)
+![desktop-navbar](https://rweber87.github.io/log-a-blog/assets/post8/side-navbar.gif)
 
 Now you can see the collapsible icon rendering and the user interacting with the side navbar when selecting that icon.
 
