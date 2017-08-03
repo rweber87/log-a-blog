@@ -91,6 +91,8 @@ The moral of our jedi story is to not take for granted the power of the internet
 
 ![happyVaderMeme](https://rweber87.github.io/log-a-blog/assets/post3/happyVaderMeme.png)
 
+Questions or comments? Feel free to shoot me an email (click the link below).
+
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)
 

@@ -37,6 +37,8 @@ Other great features offered by Mongo are it's simple and easy way to query data
 
 ![Query](https://rweber87.github.io/log-a-blog/assets/post2/querying.png)
 
+Questions or comments? Feel free to shoot me an email (click the link below).
+
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)
 

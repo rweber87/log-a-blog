@@ -344,6 +344,7 @@ All credit to the React team for creating such an easy to follow instructional f
 
 [React](https://facebook.github.io/react/tutorial/tutorial.html)
 
+Questions or comments? Feel free to shoot me an email (click the link below).
 
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)

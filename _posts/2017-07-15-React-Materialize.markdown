@@ -79,6 +79,8 @@ We've added the `ProductShow` component in place of the `image tag` which then s
 
 Through working with `Materialize` and `React` they don't always play nice together, and the documentation isn't very explicit IMO. The fun part about working with them is figuring it out on the fly and sharing that knowledge with the community. I hope this blog post helps someone out there to make their application pizazzier (is that even a word?).
 
+Questions or comments? Feel free to shoot me an email (click the link below).
+
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)
 

@@ -86,6 +86,8 @@ In our CSS file we'll add this line of code and all of our CSS editing within it
 
 Inside the curley brackets is where you'll be adding all of the CSS styling necessary when the user is interacting with your application on a mobile or tablet device.
 
+Questions or comments? Feel free to shoot me an email (click the link below).
+
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)
 

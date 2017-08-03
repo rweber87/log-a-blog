@@ -59,6 +59,7 @@ console.log(inc.next().value)
 
 Per normal synchronous javascript behavior we would expect this to again print out all the numbers before stopping. We've now wired the function up to stop once the `yield` has been hit allowing us to hook into this method. Everytime this function is envoked it will execute once giving us the capacity to perform other tasks before completing the while condition.
 
+Questions or comments? Feel free to shoot me an email (click the link below).
 
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)

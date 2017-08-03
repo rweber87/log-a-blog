@@ -117,6 +117,8 @@ Product.propTypes = {
 
 ...the error miraculously disappears. 
 
+Questions or comments? Feel free to shoot me an email (click the link below).
+
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)
 

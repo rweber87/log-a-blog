@@ -105,6 +105,7 @@ Here we're describing what the return value should be when we've set up our `Ani
 
 ![lasttest](https://rweber87.github.io/log-a-blog/assets/post5/lasttest.png)
 
+Questions or comments? Feel free to shoot me an email (click the link below).
 
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)

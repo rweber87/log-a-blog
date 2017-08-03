@@ -29,6 +29,8 @@ We've created a root node starting at `A` and have assigned child nodes up until
 
 ![binaryTree](https://rweber87.github.io/log-a-blog/assets/post9/letterTree.png)
 
+Here we've written a function that takes in the whole tree and pushes it into an empty array or our 'queue'. Next we created a while loop that says while there are any elements in the array (because 0 is a falsey value in javascript) then do this next step. The next step is where the traversing magic happens.
+
 ```javascript
 function breadthFirstTraversal(rootNode) {
   var queue = [];
@@ -45,7 +47,6 @@ function breadthFirstTraversal(rootNode) {
   }
 }
 ```
-Here we've written a function that takes in the whole tree and pushes it into an empty array or our 'queue'. Next we created a while loop that says while there are any elements in the array (because 0 is a falsey value in javascript) then do this next step. The next step is where the traversing magic happens.
 
 We start by shifting the only element in the array or the root node and making that our `visitedNode`. (Reminder: `shift()` removes the first element from an `array` and returns that element). If the `visitedNode` has a left child then `push()` that child into the queue. Do the same if the `visitedNode` has a right node. Because the queue now has two new nodes in it, we continue this process until we reach our base case or the last nodes within our tree. The output of that algorithm is this: 
 
@@ -54,6 +55,8 @@ We start by shifting the only element in the array or the root node and making t
 This breadth technique earned its name from how it traverses the tree. You can see it started from the root node `A` and `console.log`'d the next layer of elements `B` and `C`. Finally it did the last layer of our binary tree and `console.log`'d `D`, `E`, and `F`. I.e. it focuses on going broadly through each layer before moving on to the following one.
 
 Next blog post we'll focus on depth to see how that differs from this technique. 
+
+Questions or comments? Feel free to shoot me an email (click the link below).
 
 [Github](https://github.com/rweber87)
 [Email](rob.weber87@gmail.com)

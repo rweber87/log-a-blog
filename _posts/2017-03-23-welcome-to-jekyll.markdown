@@ -57,6 +57,8 @@ Here's a fun mapping of Facebook's class design. Enjoy!
 
 ![FacebookSchema](https://rweber87.github.io/log-a-blog/assets/facebookschema.jpg)
 
+Questions or comments? Feel free to shoot me an email (click the link below).
+
 [source](http://web.archive.org/web/20121031052327/http://blogs.x2line.com/al/archive/2007/06/02/3124.aspx)
 
 
