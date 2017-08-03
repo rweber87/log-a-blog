@@ -7,7 +7,7 @@ categories: Binary Tree: Breadth Vs. Depth Part 2
 
 We've got a good grasp on binary trees and how to traverse them using the breadth strategy. Let's look at another way one can traverse a binary tree utilizing the depth method.
 
-Just as the name suggests, we'll be going to the deepest part of the binary tree every time. Utilizing the example from the last blog post we have a root node starting with `A` that has two child nodes: left child node being `B` and the right child node being `C` etc. 
+Just as the name suggests, we'll be going to the deepest part of the binary tree every time. Utilizing the example from the last blog post we have a root node starting with `A` that has two child nodes: left child node being `B` and the right child node being `C` etc.    
 
 ![binaryTree](https://rweber87.github.io/log-a-blog/assets/post9/letterTree.png)
 
