@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Binary Trees - Breadth Vs. Depth Part 2"
+title:  "Breadth Vs. Depth Part 2"
 date:   2017-08-03 15:30:04 -0400
-categories: Binary Trees - Breadth Vs. Depth Part 2
+categories: Breadth Vs. Depth Part 2
 ---
 
 We've got a good grasp on binary trees and how to traverse them using the breadth strategy. Let's look at another way one can traverse a binary tree utilizing the depth method.

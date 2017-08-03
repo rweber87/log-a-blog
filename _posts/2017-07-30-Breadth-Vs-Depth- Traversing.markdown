@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Binary Trees - Breadth Vs. Depth Part 1"
+title:  "Breadth Vs. Depth Part 1"
 date:   2017-07-30 15:30:04 -0400
-categories: Binary Trees - Breadth Vs. Depth Part 1
+categories: Breadth Vs. Depth Part 1
 ---
 
 The topic of breadth vs. depth specifically relates to how one can touch every point within a binary tree, also known as traversing the tree. In order to fully understand what that means it's important for us to grasp what exactly a binary tree is. According to [Wikipedia.org](https://en.wikipedia.org/wiki/Binary_tree) "a binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child." Below is a picture example of a standard binary tree.
