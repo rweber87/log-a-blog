@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Breadth Vs. Depth Part 1"
+title:  "Binary Trees: Breadth Vs. Depth Part 1"
 date:   2017-07-30 15:30:04 -0400
 categories: Binary Trees: Breadth Vs. Depth Part 1
 ---
