@@ -5,117 +5,56 @@ date:   2017-07-30 15:30:04 -0400
 categories: Binary Tree Part One
 ---
 
-Checking data types in React utilizing `propTypes` has been deprecated since version 15.5 and replaced with the `npm prop-types` library. To install this with your React app you can type the command `npm install --save prop-types`. This allows the developer to validate propTypes that are being passed through certain components, as well as validates the appropriate types are being received. 
+The topic of breadth vs. depth specifically relates to how one can touch every point within a binary tree, also known as traversing the tree. In order to fully understand what that means it's important for us to grasp what exactly a binary tree is. According to [Wikipedia.org](https://en.wikipedia.org/wiki/Binary_tree) "a binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child." Below is a picture example of a standard binary tree.    
 
-To add the `propTypes` validations to a particular component it's the same as any other item from an `npm` library - utilize the ES6 syntax and add this line of code to the top of your file `import PropTypes from 'prop-types'`.
+![binaryTree](https://rweber87.github.io/log-a-blog/assets/post9/binaryTree.png)
 
-A few `propTypes` you can check being passed into a component are the basic primitive types such as `PropTypes.array, PropTypes.bool, PropTypes.func, PropTypes.number, PropTypes.object, PropTypes.string, PropTypes.symbol`.
+Starting from the top, the root node `2` has two children - `7` as the left node and `5` as the right. `7` has two child nodes `2` as the left node and `6` as the right. I think you get the point from here.
+
+This data structure is different from another type of binary tree known as a binary search tree (BST). The primary difference are the child nodes from the parent nodes. Unlike an unsorted binary tree, a binary search tree's root node's left child is less than the root node, while the right child is greater than the root node. Let's look at a quick example of a binary search tree to see the difference: 
+
+![binaryTree](https://rweber87.github.io/log-a-blog/assets/post9/binarySearchTree.png)
+
+Here we have a root node of `8` with two child nodes. The left child node `3` is in fact less than the parent node, while the right node `10` is greater than the root node. 
+
+But how would you traverse either data structure without repeating a node within the tree? There are two common ways to walk the tree graph using either the breadth technique or the depth technique.
+
+The breadth technique builds up a queue of nodes as we traverse the tree, and removes the element from the queue as we hit each node. Similar to the accounting technique known as [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) the first (or oldest) item to be added to the queue is the first item to be processed.
+
+We'll first build out our node tree using objects with letters as values.
+
+![binaryTree](https://rweber87.github.io/log-a-blog/assets/post9/nodeTree.png)
+
+We've created a root node starting at `A` and have assigned child nodes up until the letter `F` that have ended with a result that looks like this:
+
+![binaryTree](https://rweber87.github.io/log-a-blog/assets/post9/letterTree.png)
+
+Here we've written a function that takes in the whole tree and pushes it into an empty array or our 'queue'. Next we created a while loop that says while there are any elements in the array (because 0 is a falsey value in javascript) then do this next step. The next step is where the traversing magic happens.
 
 ```javascript
-import React from 'react'
-import ProductShow from './ProductShow'
-import PropTypes from 'prop-types'
-
-function Product(props) {
-  let product = props.product
-  return (
-    <div id='product-card' key={product.id} className="card horizontal">
-          <div id='img-product' className="card-image half-container">
-            <div className="image-container">
-              <ProductShow state={props.state} handleSubmit={props.handleSubmit} handleSelectBox={props.handleSelectBox} product={product} />
-            </div>
-          </div>
-          <div id='card-content' className="right card-content half-container">
-            <h5 className="card-title center">{product.name}</h5>
-            <p className="center">Category: {product.category}</p>
-            <p className="center">{product.description}</p>
-          </div>
-      </div>
-  )
-}
-
-export default Product
-
-Product.propTypes = {
-  name: PropTypes.integer,
+function breadthFirstTraversal(rootNode) {
+  var queue = [];
+  queue.push(rootNode);
+  while (queue.length) {
+    var visitedNode = queue.shift();
+    if (visitedNode.left) {
+      queue.push(visitedNode.left);
+    }
+    if (visitedNode.right) {
+      queue.push(visitedNode.right);
+    }
+    console.log('visited:', visitedNode.value);
+  }
 }
 ```
 
-Above we have a component that's rendering a product object. We're checking if the `propType` *name* that's part of the object being passed to this component is an integer (it's actually a string). Here we'll get an error displayed on the browser's console that looks like this...
+We start by shifting the only element in the array or the root node and making that our `visitedNode`. (Reminder: `shift()` removes the first element from an `array` and returns that element). If the `visitedNode` has a left child then `push()` that child into the queue. Do the same if the `visitedNode` has a right node. Because the queue now has two new nodes in it, we continue this process until we reach our base case or the last nodes within our tree. The output of that algorithm is this: 
 
-![error](https://rweber87.github.io/log-a-blog/assets/post6/error.png)
+![binaryTree](https://rweber87.github.io/log-a-blog/assets/post9/algorithmOutput.png)
 
-The `propType` name is invalid because it is in fact a string as opposed to the integer we're checking for. If we change the type we're checking to a string we'll notice the error disappear from the console because it does in fact match the validation.
+This breadth technique earned its name from how it traverses the tree. You can see it started from the root node `A` and `console.log`'d the next layer of elements `B` and `C`. Finally it did the last layer of our binary tree and `console.log`'d `D`, `E`, and `F`. I.e. it focuses on going broadly through each layer before moving on to the following one.
 
-PropTypes also offers plenty of other validations beyond just primitive types. You can validate if a property is an instance of a particular class, and even require specific elements. One last thing I'll demonstrate is requiring elements passed to properties. 
-
-```javascript
-import React from 'react'
-import ProductShow from './ProductShow'
-import PropTypes from 'prop-types'
-
-function Product(props) {
-  let product = props.product
-  return (
-    <div id='product-card' key={product.id} className="card horizontal">
-          <div id='img-product' className="card-image half-container">
-            <div className="image-container">
-              <ProductShow state={props.state} handleSubmit={props.handleSubmit} handleSelectBox={props.handleSelectBox} product={product} />
-            </div>
-          </div>
-          <div id='card-content' className="right card-content half-container">
-            <h5 className="card-title center">{product.name}</h5>
-            <p className="center">Category: {product.category}</p>
-            <p className="center">{product.description}</p>
-          </div>
-      </div>
-  )
-}
-
-export default Product
-
-Product.propTypes = {
-  users: PropTypes.object.isRequired
-}
-```
-
-We've said that `users` should be required in the `Product` component for demonstration purposes. 'Users' is obviously something we're not passing to this component, so naturally we receive an error such as this. 
-
-![error2](https://rweber87.github.io/log-a-blog/assets/post6/error2.png)
-
-Once we fix our code to explicitly require a 'product' instead of 'user'...
-
-```javascript
-import React from 'react'
-import ProductShow from './ProductShow'
-import PropTypes from 'prop-types'
-
-function Product(props) {
-  let product = props.product
-  return (
-    <div id='product-card' key={product.id} className="card horizontal">
-          <div id='img-product' className="card-image half-container">
-            <div className="image-container">
-              <ProductShow state={props.state} handleSubmit={props.handleSubmit} handleSelectBox={props.handleSelectBox} product={product} />
-            </div>
-          </div>
-          <div id='card-content' className="right card-content half-container">
-            <h5 className="card-title center">{product.name}</h5>
-            <p className="center">Category: {product.category}</p>
-            <p className="center">{product.description}</p>
-          </div>
-      </div>
-  )
-}
-
-export default Product
-
-Product.propTypes = {
-  product: PropTypes.object.isRequired
-}
-```
-
-...the error miraculously disappears. 
+Next blog post we'll focus on depth to see how that differs from this technique. 
 
 Questions or comments? Feel free to shoot me an email (click the link below).
 
