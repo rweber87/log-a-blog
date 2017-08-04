@@ -5,117 +5,46 @@ date:   2017-08-03 15:30:04 -0400
 categories: Binary Tree Part Two
 ---
 
-Checking data types in React utilizing `propTypes` has been deprecated since version 15.5 and replaced with the `npm prop-types` library. To install this with your React app you can type the command `npm install --save prop-types`. This allows the developer to validate propTypes that are being passed through certain components, as well as validates the appropriate types are being received. 
+We've got a good grasp on binary trees and how to traverse them using the breadth strategy. Let's look at another way one can traverse a binary tree utilizing the depth method.
 
-To add the `propTypes` validations to a particular component it's the same as any other item from an `npm` library - utilize the ES6 syntax and add this line of code to the top of your file `import PropTypes from 'prop-types'`.
+Just as the name suggests, we'll be going to the deepest part of the binary tree every time. Utilizing the example from the last blog post we have a root node starting with `A` that has two child nodes: left child node being `B` and the right child node being `C` etc.    
 
-A few `propTypes` you can check being passed into a component are the basic primitive types such as `PropTypes.array, PropTypes.bool, PropTypes.func, PropTypes.number, PropTypes.object, PropTypes.string, PropTypes.symbol`.
+![binaryTree](https://rweber87.github.io/log-a-blog/assets/post9/letterTree.png)
+
+In the breadth example we visited each layer of the binary tree and touched each node before moving to the subsequent level to do the same thing. Our depth function will be visiting the deepest node until each one has been visited.
+
+While traversing the binary tree with breadth we're creating a queue of each node and running through them one by one (also known as [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics))). In this example, we're creating a stack then winding it down. This is also known as [LIFO](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) where the last item added to the array is the first item to be executed.
 
 ```javascript
-import React from 'react'
-import ProductShow from './ProductShow'
-import PropTypes from 'prop-types'
-
-function Product(props) {
-  let product = props.product
-  return (
-    <div id='product-card' key={product.id} className="card horizontal">
-          <div id='img-product' className="card-image half-container">
-            <div className="image-container">
-              <ProductShow state={props.state} handleSubmit={props.handleSubmit} handleSelectBox={props.handleSelectBox} product={product} />
-            </div>
-          </div>
-          <div id='card-content' className="right card-content half-container">
-            <h5 className="card-title center">{product.name}</h5>
-            <p className="center">Category: {product.category}</p>
-            <p className="center">{product.description}</p>
-          </div>
-      </div>
-  )
-}
-
-export default Product
-
-Product.propTypes = {
-  name: PropTypes.integer,
+function depthFirstTraversal(rootNode) {
+  var stack = [];
+  stack.push(rootNode);
+  while (stack.length) {
+    var visitedNode = stack.pop();
+    if (visitedNode.right) {
+      stack.push(visitedNode.right);
+    }
+    if (visitedNode.left) {
+      stack.push(visitedNode.left);
+    }
+    console.log('visited:', visitedNode.value);
+  }
 }
 ```
 
-Above we have a component that's rendering a product object. We're checking if the `propType` *name* that's part of the object being passed to this component is an integer (it's actually a string). Here we'll get an error displayed on the browser's console that looks like this...
-
-![error](https://rweber87.github.io/log-a-blog/assets/post6/error.png)
-
-The `propType` name is invalid because it is in fact a string as opposed to the integer we're checking for. If we change the type we're checking to a string we'll notice the error disappear from the console because it does in fact match the validation.
-
-PropTypes also offers plenty of other validations beyond just primitive types. You can validate if a property is an instance of a particular class, and even require specific elements. One last thing I'll demonstrate is requiring elements passed to properties. 
+Using our same binary tree example from before our expected output utilizing depth is in this order - `A`, `B`, `D`, `E`, `C`, and finally `F`. Walking through the algorith above we first add the entire node to our stack. 
 
 ```javascript
-import React from 'react'
-import ProductShow from './ProductShow'
-import PropTypes from 'prop-types'
-
-function Product(props) {
-  let product = props.product
-  return (
-    <div id='product-card' key={product.id} className="card horizontal">
-          <div id='img-product' className="card-image half-container">
-            <div className="image-container">
-              <ProductShow state={props.state} handleSubmit={props.handleSubmit} handleSelectBox={props.handleSelectBox} product={product} />
-            </div>
-          </div>
-          <div id='card-content' className="right card-content half-container">
-            <h5 className="card-title center">{product.name}</h5>
-            <p className="center">Category: {product.category}</p>
-            <p className="center">{product.description}</p>
-          </div>
-      </div>
-  )
-}
-
-export default Product
-
-Product.propTypes = {
-  users: PropTypes.object.isRequired
-}
+{ value: 'A',
+  left: { value: 'B', left: { value: 'D' }, right: { value: 'E' } },
+  right: { value: 'C', left: { value: 'F' } } }
 ```
 
-We've said that `users` should be required in the `Product` component for demonstration purposes. 'Users' is obviously something we're not passing to this component, so naturally we receive an error such as this. 
+We visit `A`'s right node (`C`) and add it to our stack followed by `A`'s left node (`B`). The next iteration we do the same process by `pop()`ing the last element from the stack (`B` node) and repeat the same process until our result is as expected. 
 
-![error2](https://rweber87.github.io/log-a-blog/assets/post6/error2.png)
+![depthTraversalResult](https://rweber87.github.io/log-a-blog/assets/post10/depthTraversalResult.png)
 
-Once we fix our code to explicitly require a 'product' instead of 'user'...
-
-```javascript
-import React from 'react'
-import ProductShow from './ProductShow'
-import PropTypes from 'prop-types'
-
-function Product(props) {
-  let product = props.product
-  return (
-    <div id='product-card' key={product.id} className="card horizontal">
-          <div id='img-product' className="card-image half-container">
-            <div className="image-container">
-              <ProductShow state={props.state} handleSubmit={props.handleSubmit} handleSelectBox={props.handleSelectBox} product={product} />
-            </div>
-          </div>
-          <div id='card-content' className="right card-content half-container">
-            <h5 className="card-title center">{product.name}</h5>
-            <p className="center">Category: {product.category}</p>
-            <p className="center">{product.description}</p>
-          </div>
-      </div>
-  )
-}
-
-export default Product
-
-Product.propTypes = {
-  product: PropTypes.object.isRequired
-}
-```
-
-...the error miraculously disappears. 
+These methods are really great practice when navigating interviews in an engineering capacity! 
 
 Questions or comments? Feel free to shoot me an email (click the link below).
 
