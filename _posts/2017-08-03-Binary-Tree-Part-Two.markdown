@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "React PropTypes"
-date:   2017-07-08 15:30:04 -0400
-categories: React PropTypes Libraries
+title:  "Binary Tree Part Two"
+date:   2017-08-03 15:30:04 -0400
+categories: Binary Tree Part Two
 ---
 
 Checking data types in React utilizing `propTypes` has been deprecated since version 15.5 and replaced with the `npm prop-types` library. To install this with your React app you can type the command `npm install --save prop-types`. This allows the developer to validate propTypes that are being passed through certain components, as well as validates the appropriate types are being received. 
