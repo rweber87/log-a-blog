@@ -68,36 +68,52 @@ function stringToEquation(formula){
 
 In our `forEach()` we're only selecting the values that are not our operators and adding them to our defined `var solution` variable at the beginning of our function. 
 
-Once we've solved this problem it becomes really easy to modify our algorithm to handle other operators. Here we've simply added another `while` loop to handle the division operator. You get the point from here. 
+Once we've solved this problem it becomes really easy to modify our algorithm to handle other operators. We'll need to determine which operator between divide and multiply needs to be handled first. I've created a helper method called `determineIndexOfOperator(arr);` that takes in the split string and tells us which index should be used first. After that we continue to loop until we've done all the multiply and divide operators, then we add and subtract the remaining values in our `forEach()` loop.
 
 
 ```javascript
+var equation = "140 / 7 + 4 * 1";
 function stringToEquation(formula){
   var arr = formula.split(" ");
   var solution = 0;
+
+  while(arr.indexOf("*") > -1 || arr.indexOf("/") > -1){
+    var operatorIndex = determineIndexOfOperator(arr);
+    var multNums = arr[operatorIndex] == "*" ? [Number(arr[operatorIndex - 1]) * Number(arr[operatorIndex + 1])] : [Number(arr[operatorIndex - 1]) / Number(arr[operatorIndex + 1])];
+    arr = arr.slice(0, operatorIndex - 1).concat(multNums, arr.slice(operatorIndex + 2));
+  };
   
-  while(arr.indexOf("*") > -1 ){
-    var multNums = [Number(arr[arr.indexOf("*") - 1]) * Number(arr[arr.indexOf("*") + 1])];
-    arr = arr.slice(0, arr.indexOf("*") - 1).concat(multNums, arr.slice(arr.indexOf("*") + 2));
+  if(arr.length > 1){
+    arr.forEach(function(el){
+      if(el != "+" && el != "-") {
+        if(arr[arr.indexOf(el) - 1] == "-") {
+          solution -= Number(el);
+        } else if(arr[arr.indexOf(el) - 1] == "+") {
+          solution += Number(el);
+        } else {
+          solution = Number(el);
+        }
+      };
+    });
+    return solution;
   };
 
-  while(arr.indexOf("/") > -1 ){
-    var divNums = [Number(arr[arr.indexOf("/") - 1]) / Number(arr[arr.indexOf("/") + 1])];
-    arr = arr.slice(0, arr.indexOf("/") - 1).concat(divNums, arr.slice(arr.indexOf("/") + 2));
-  };
-
-  
-  arr.forEach(function(el){
-    if(el != "+"){
-      solution += Number(el)
-    };
-  });
-
-  return solution;
+  return arr[0];
   
 }
 
+function determineIndexOfOperator(arr){
+  if(arr.indexOf("*") != -1 && arr.indexOf("/") == -1){
+    return arr.indexOf("*");
+  } else if (arr.indexOf("/") != -1 && arr.indexOf("*") == -1) {
+    return arr.indexOf("/");
+  } else {
+    return arr.indexOf("/") < arr.indexOf("*") ? arr.indexOf("/") : arr.indexOf("*")
+  }
+}
 ```
+
+
 
 The key takeaways I learned from this experience are:
 
