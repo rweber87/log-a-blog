@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "String Equation Algorithm"
-date:   2017-08-03 15:30:04 -0400
+date:   2017-08-07 15:30:04 -0400
 categories: String Equation Algorithm
 ---
 
